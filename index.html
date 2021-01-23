@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.2/dist/paper.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Clipboard - jrgonzalez.es</title>
+</head>
+
+<body>
+  <div class="paper container text-center">
+
+    <div id="header" class="demo-title">
+      <div class="row flex-center">
+        <div class="text-center">
+          <h1>Your easy clipboard</h1>
+          <h3>your easy copy-paste online</h3>
+        </div>
+      </div>
+    </div>
+
+    <div id="search" class="container-sm text-center">
+      <p>
+        Board Name
+      </p>
+      <input type="text" id="board" class="fullWidth noResize" />
+      <button onclick="gotoBoard()" class="marginFourAuto">
+        GO TO BOARD
+      </button>
+
+    </div>
+
+    <div id="central" class="container-sm text-center">
+
+      <p class="text-center">
+        Board content
+      </p>
+
+
+      <textarea name="text" id="content" cols="30" rows="10" class="fullWidth noResize"></textarea>
+      <button onclick="saveBoard()" class="marginFourAuto">
+        SAVE BOARD
+      </button>
+    </div>
+
+    <div id="footer" class="container-sm text-center">
+      Made by jrgonzalez.es with love ♥
+    </div>
+
+  </div>
+
+</body>
+
+<style>
+
+
+</style>
+
+<script>
+  const queryString = window.location.search;
+  console.log(queryString);
+  const urlParams = new URLSearchParams(queryString);
+  const board = urlParams.get('board');
+  const boardContent = urlParams.get('content');
+  console.log(board);
+  if (board !== undefined) {
+    input_board = document.getElementById('board');
+    input_board.value = board;
+
+    // textarea_content = document.getElementById('content');
+    // console.log(textarea_content);
+    // fake_content = generateContent(board.length);
+    // console.info("FAKE:", fake_content);
+    // textarea_content.value = fake_content;
+  }
+
+  if (boardContent !== undefined && boardContent !== null && boardContent.length > 0) {
+
+    textarea_content = document.getElementById('content');
+    // console.log(textarea_content);
+    // fake_content = generateContent(board.length);
+    // console.info("FAKE:", fake_content);
+    textarea_content.value = boardContent;
+  }
+
+  function gotoBoard() {
+    input_board = document.getElementById('board');
+    box_id = input_board.value;
+    console.info("board:", box_id);
+    if (box_id != board) {
+      window.location.href = "?board=" + box_id;
+    } else {
+      console.log("SAME BOARD");
+    }
+  }
+
+  function generateContent(length) {
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
+  function saveBoard() {
+    input_board = document.getElementById('board');
+    box_id = input_board.value;
+
+    textarea_content = document.getElementById('content');
+    if (textarea_content.value == '' || textarea_content.value === undefined) {
+      textarea_content.value = generateContent(board.length);
+    }
+
+    window.location.href = "?board=" + box_id + "&content=" + textarea_content.value;
+  }
+
+</script>
+
+</html>

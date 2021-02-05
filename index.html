@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.2/dist/paper.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Clipboard - jrgonzalez.es</title>
+</head>
+
+<body>
+
+    <div class="paper container text-center">
+
+        <div id="header" class="demo-title">
+            <div class="row flex-center">
+                <div class="text-center">
+                    <h1>Nuevo portapapeles virtual</h1>
+                    <h3>Tu copia - pega más fácil online</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="div_link" class="hidden">
+            <p>
+                Tu enlace es el siguiente:
+            </p>
+            <p><a href="#" id="link"></a></p>
+            <button onclick="copyToClipboard('link')" ;>Copiar enlace</button>
+        </div>
+
+        <div id="search" class="container-sm text-center">
+            <p>
+                Nombre de la nota
+            </p>
+            <input type="text" id="board" class="fullWidth noResize" />
+            <button onclick="gotoBoard()" class="marginFourAuto">
+                Buscar nota
+            </button>
+
+        </div>
+
+        <div id="central" class="container-sm text-center">
+
+            <p class="text-center">
+                Contenido de la nota
+            </p>
+
+            <textarea name="text" id="content" cols="30" rows="10" class="fullWidth noResize"></textarea>
+            <button onclick="saveBoard()" class="marginFourAuto">
+                Guardar nota
+            </button>
+
+        </div>
+
+        <div id="footer" class="container-sm text-center">
+            Juan Ramón González Morales - 2021
+        </div>
+
+    </div>
+
+</body>
+
+<script src="board.js"></script>
+
+</html>

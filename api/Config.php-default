@@ -1,0 +1,20 @@
+<?php
+
+class Config
+{
+    protected $host = '';
+    protected $dbname = '';
+    protected $dbuser = '';
+    protected $dbpass = '';
+
+    public function getConfigArray(): array
+    {
+        return [
+            'host' => $this->host, 
+            'dbname' => $this->dbname, 
+            'dbuser' => $this->dbuser, 
+            'dbpass' => $this->dbpass
+        ];
+    }
+
+}

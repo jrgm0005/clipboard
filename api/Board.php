@@ -144,7 +144,8 @@ class Board
                 $result[] = [
                     'id' => $row['id'],
                     'name' => $row['name'],
-                    'content' => $row['content']
+                    'content' => $row['content'],
+                    'created' => $row['created_at'],
                 ];
             }
         }

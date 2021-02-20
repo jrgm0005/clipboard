@@ -65,10 +65,12 @@ function gotoBoard() {
 
                     if (typeof data.boards !== "undefined" && data.boards.length == 1) {
 
-                        // console.log(data.boards[0]);
+                        console.log(data.boards[0]);
 
                         textarea_content = document.getElementById('content');
                         textarea_content.value = data.boards[0].content;
+
+                        setCreated(data.boards[0].created);
 
                         text_url = document.getElementById('url');
 
@@ -101,6 +103,7 @@ function resetBoardFields() {
     textarea_content.value = '';
 
     hideYourLink();
+    hideCreatedDiv();
 }
 
 function saveBoard() {
@@ -160,6 +163,27 @@ function showYourLink() {
     div = document.getElementById('div_link');
     div.style.display = 'block';
 }
+
+function hideCreatedDiv() {
+    div = document.getElementById('div_created');
+    div.style.display = 'none';
+}
+function showCreatedDiv() {
+    div = document.getElementById('div_created');
+    div.style.display = 'block';
+}
+function setCreated(value) {
+    if (value !== undefined) {
+        var date = new Date(value);
+        p = document.getElementById('p_created');
+
+        p.innerHTML = "Nota creada el " + date.getUTCFullYear() + "/" + (date.getUTCMonth() + 1) + "/" + date.getUTCDate() + " a las " + date.getUTCHours() + ":" + date.getUTCMinutes();
+        showCreatedDiv();
+        return;
+    }
+    hideCreatedDiv();
+}
+
 
 function setBoardLink(url) {
     a = document.getElementById('link');

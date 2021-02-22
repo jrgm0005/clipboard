@@ -1,4 +1,4 @@
-info = getPathInfo();
+info = getPathInfo(app_folder);
 hideYourLink();
 
 if (info.board !== undefined && info.board != null) {
@@ -43,13 +43,20 @@ function getBoardName() {
     return (board_name == '' || board_name === undefined) ? '' : board_name.replace(/\s/g, '');
 }
 
-function getPathInfo() {
+function getPathInfo(app_folder) {
+
+    parts_lenght = app_folder == '' ? 2 : 3;
     url = window.location.pathname;
+
     var info = {};
     info.folder = url.substring(0, url.lastIndexOf('/'));
-    lenght = info.folder == "/" ? 2 : 3;
     parts = url.split('/');
-    info.board = parts.length == lenght && '' != parts[lenght - 1] ? parts[lenght - 1] : null;
+
+    if (app_folder != '' && parts[1] != app_folder) {
+        throw ("INVALID_APP_FOLDER_CONFIG");
+    }
+
+    info.board = parts.length == parts_lenght && '' != parts[parts_lenght - 1] ? parts[parts_lenght - 1] : null;
     return info;
 }
 

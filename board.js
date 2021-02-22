@@ -47,8 +47,9 @@ function getPathInfo() {
     url = window.location.pathname;
     var info = {};
     info.folder = url.substring(0, url.lastIndexOf('/'));
+    lenght = info.folder == "/" ? 2 : 3;
     parts = url.split('/');
-    info.board = parts.length == 3 && '' != parts[2] ? parts[2] : null;
+    info.board = parts.length == lenght && '' != parts[lenght - 1] ? parts[lenght - 1] : null;
     return info;
 }
 

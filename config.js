@@ -1,0 +1,1 @@
+app_folder = 'APP FOLDER OR EMPTY IF ROOT';

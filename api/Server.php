@@ -18,10 +18,9 @@ $route = array_values($route);
 
 $arr_json = null;
 
-Helper::saveInLog("POST Request", $_POST);
 $post = json_decode(file_get_contents('php://input'), true);
-
-Helper::saveInLog("Route", $route);
+// Helper::saveInLog("$method Request");
+// Helper::saveInLog("Route", $route);
 
 if (count($route) <= 2) {
     switch ($route[0]) {

@@ -42,7 +42,7 @@
                 Nombre de la nota
             </p>
             <input type="text" id="board" class="fullWidth noResize" />
-            <button onclick="gotoBoard()" class="marginFourAuto">
+            <button onclick="searchBoard()" class="marginFourAuto">
                 Buscar nota
             </button>
         </div>
@@ -56,9 +56,23 @@
             </p>
 
             <textarea name="text" id="content" cols="30" rows="10" class="fullWidth noResize"></textarea>
-            <button onclick="saveBoard()" class="marginFourAuto">
-                Guardar nota
-            </button>
+
+            <div class="row flex-spaces">
+                <div class="sm-4 col">
+                    <fieldset class="form-group">
+                        <legend>Opciones de la nota</legend>
+                        <label for="destroy" class="paper-check">
+                            <input type="checkbox" name="destroy" id="destroy" value="destroy"> <span>Autodestruir nota</span>
+                        </label>
+                    </fieldset>
+                </div>
+                <div class="sm-4 col">
+                    <button onclick="saveBoard()" class="marginFourAuto">
+                        Guardar nota
+                    </button>
+                </div>
+            </div>
+
 
         </div>
 
